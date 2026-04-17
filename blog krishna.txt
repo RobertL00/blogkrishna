@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curve Fitting Blog - Krishna Gupta</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: #f0f2f5;
+    color: #333;
+    scroll-behavior: smooth;
+  }
+  header {
+    position: sticky;
+    top: 0;
+    background: #4CAF50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5rem;
+    z-index: 1000;
+  }
+  nav {
+    position: fixed;
+    right: 20px;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+  }
+  nav a {
+    background: #2e7d32;
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+  }
+  nav a:hover { background: #66bb6a; }
+
+  section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 50px 20px;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    position: relative;
+  }
+  section:nth-child(odd) { background: #ffffff; }
+  section:nth-child(even) { background: #e8f5e9; }
+
+  h2 { font-size: 2rem; margin-bottom: 20px; color: #2e7d32; }
+  p { max-width: 800px; font-size: 1.1rem; line-height: 1.8; }
+
+  /* Scroll animation */
+  section.fade-in { opacity: 0; transform: translateY(50px); }
+  section.visible { opacity: 1; transform: translateY(0); }
+
+  /* Curve SVG animations */
+  svg {
+    width: 300px;
+    height: 150px;
+    margin-top: 30px;
+    overflow: visible;
+  }
+  path {
+    fill: none;
+    stroke: #2e7d32;
+    stroke-width: 3;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw 2s forwards;
+  }
+  path:hover { stroke: #66bb6a; stroke-width: 4; cursor: pointer; }
+
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+</style>
+</head>
+<body>
+
+<header>
+Curve Fitting in Computer Mathematics <br> NAME: Krishna Gupta | ROLL NO: 18082
+</header>
+
+<nav>
+  <a href="#intro">Intro</a>
+  <a href="#linear">Linear</a>
+  <a href="#polynomial">Polynomial</a>
+  <a href="#least">Least Squares</a>
+  <a href="#spline">Spline</a>
+  <a href="#error">Error Analysis</a>
+  <a href="#regression">Regression Types</a>
+  <a href="#example">Practical Example</a>
+</nav>
+
+<section id="intro" class="fade-in">
+<h2>Introduction to Curve Fitting</h2>
+<p>Curve fitting constructs a curve that best fits data points to predict unknown values.</p>
+</section>
+
+<section id="linear" class="fade-in">
+<h2>Linear Curve Fitting</h2>
+<p>Fits a straight line using least squares method to minimize differences between actual and predicted values.</p>
+<svg viewBox="0 0 300 150"><path d="M10 140 L290 10"/></svg>
+</section>
+
+<section id="polynomial" class="fade-in">
+<h2>Polynomial Curve Fitting</h2>
+<p>Fits a polynomial of degree n to model complex relationships in data.</p>
+<svg viewBox="0 0 300 150"><path d="M10 140 C50 50, 150 50, 290 140"/></svg>
+</section>
+
+<section id="least" class="fade-in">
+<h2>Least Squares Method</h2>
+<p>Minimizes sum of squared errors to provide best-fit line or curve.</p>
+<svg viewBox="0 0 300 150"><path d="M10 130 L100 80 L200 60 L290 40"/></svg>
+</section>
+
+<section id="spline" class="fade-in">
+<h2>Spline Curve Fitting</h2>
+<p>Piecewise polynomials connecting data points smoothly, reducing overfitting.</p>
+<svg viewBox="0 0 300 150"><path d="M10 140 C60 50, 120 120, 180 60 S290 130, 290 130"/></svg>
+</section>
+
+<section id="error" class="fade-in">
+<h2>Error Analysis</h2>
+<p>Calculates residuals to evaluate the accuracy of curve fitting models.</p>
+</section>
+
+<section id="regression" class="fade-in">
+<h2>Regression Types</h2>
+<p>Includes linear, polynomial, multiple regression, and non-linear regression techniques.</p>
+</section>
+
+<section id="example" class="fade-in">
+<h2>Practical Example</h2>
+<p>Predicting stock prices using polynomial regression or fitting sensor data in engineering applications.</p>
+</section>
+
+<script>
+const sections = document.querySelectorAll('section');
+const observer = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+if(entry.isIntersecting){ entry.target.classList.add('visible'); }
+});
+},{ threshold: 0.3 });
+sections.forEach(section => observer.observe(section));
+</script>
+
+</body>
+</html>
